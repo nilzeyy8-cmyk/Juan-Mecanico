@@ -145,11 +145,39 @@
     .romantic-text {
         font-family: 'Dancing Script', cursive;
     }
+
+    /* Estilos para el botón de música */
+    #unmuteButton {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        padding: 10px 15px;
+        background-color: #ff6b6b;
+        color: white;
+        border: none;
+        border-radius: 50px;
+        font-family: 'Dancing Script', cursive;
+        font-size: 18px;
+        cursor: pointer;
+        z-index: 1000;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    }
+
+    #unmuteButton:hover {
+        background-color: #ff5252;
+        transform: scale(1.05);
+    }
     </style>
 </head>
 <body>
     <!-- Fondo de corazones animados -->
     <div class="hearts-background" id="heartsBackground"></div>
+    
+    <!-- Música de fondo -->
+    <iframe id="backgroundMusic" width="0" height="0" src="https://www.youtube.com/embed/Chj9k-peGhE?autoplay=1&mute=1&loop=1&playlist=Chj9k-peGhE" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+    <!-- Botón para activar sonido -->
+    <button id="unmuteButton">🔇 Activar Música</button>
     
     <div class="container">
         <div id="gifContainer">
@@ -212,6 +240,13 @@
     
     // Inicializar corazones cuando la página cargue
     document.addEventListener('DOMContentLoaded', createHearts);
+
+    // Script para la música de fondo
+    document.getElementById('unmuteButton').addEventListener('click', function() {
+        var iframe = document.getElementById('backgroundMusic');
+        iframe.src = "https://www.youtube.com/embed/Chj9k-peGhE?autoplay=1&mute=0&loop=1&playlist=Chj9k-peGhE";
+        this.style.display = 'none';
+    });
 
     // Script original
     let noButtonClickCount = 0;
